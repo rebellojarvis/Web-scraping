@@ -1,3 +1,4 @@
+pip install --upgrade pip
 import numpy as np
 import pandas as pd
 pd.options.mode.chained_assignment = None
@@ -89,7 +90,6 @@ df = column_validation(df)
 
 
 df_final = df.iloc[:, :-4]
-df_final
 
 
 # ## Goal 1
@@ -197,23 +197,6 @@ for code in countries:
         
         # Adding values to the new dataframe based on the values retrieved from the website
         new_df = new_df.append({'iso' : code, 'seaport' : port.string, 'lines' : ", ".join(str(e) for e in set(s)), 'import_restrictions':import_restrictions.get_text(),'export_restrictions':export_restrictions.get_text(),'website':main_url + website.get("href")}, ignore_index = True)
-        
-        
-
-
-# ## Goal 2
-# 
-# ### Table below display all the seaports within the countries mentioned in trades.csv
-
-# In[12]:
-
-
-new_df
-
-
-# # 3. Loading the data
-
-# In[13]:
 
 
 new_df.to_csv('ports_info.csv',index=False)
